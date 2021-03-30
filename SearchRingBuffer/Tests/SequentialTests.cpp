@@ -52,33 +52,6 @@ SCENARIO("Requesting data from an empty buffer")
   }
 }
 
-/*
-struct NotDefaultConstructable{
-        NotDefaultConstructable(int val){};
-};
-SCENARIO ("Store non default constructable data")
-{
-
-    GIVEN  ("A buffer non default constructable data")
-        {
-        Concurrent::SearchRingBuffer<NotDefaultConstructable, 10> circBuff;
-        WHEN ("Items are stored")
-                 {
-                        // NotDefaultConstructable a{5};
-                         /*
-                        auto time = sysClock::now();
-            circBuff.push(time,	NotDefaultConstructable{5});
-            circBuff.push(time + minutes(1), NotDefaultConstructable{10});
-            THEN ("The data can be retrieved using the time as a key")
-                        {
-                        CHECK ( circBuff.read(time) == NotDefaultConstructable{5});
-                                CHECK ( circBuff.read(time + minutes(1)) == NotDefaultConstructable{10});
-           }
-                   *//*
-        }
-    }
-}
-*/
 SCENARIO("Requesting data from a buffer with only 1 element")
 {
   GIVEN("A buffer with one item")
