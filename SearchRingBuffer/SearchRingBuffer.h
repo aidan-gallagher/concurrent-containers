@@ -5,6 +5,7 @@
 #include <chrono>
 #include <mutex>
 #include <shared_mutex>
+#include <algorithm>
 
 namespace Concurrent
 {
@@ -181,12 +182,12 @@ SearchRingBuffer<T, SIZE>::findItem(const time_point requestedTime) const
   // Binary search using std::lower_bound to find the first element which does not compare less than requestedTime
   // Use std::lower_bound and use a binary predicate comparison which will return true is the first element is less than the second
   // Comparison lambda will use the requestedTime (pair.first) to compare
-  T    item; // TODO: remove this
-  auto above_val = lower_bound(start_arr, end_arr, std::make_pair(requestedTime, item), [](std::pair<time_point, T> lhs, std::pair<time_point, T> rhs) -> bool {
+  T    item;  // Fake object needed to construct target object.
+  auto above_val = std::lower_bound(start_arr, end_arr, std::make_pair(requestedTime, item), [](std::pair<time_point, T> lhs, std::pair<time_point, T> rhs) -> bool {
     return lhs.first < rhs.first;
   });
 
-  if (above_val->first == requestedTime) // TODO: how often will this actually be tha case?
+  if (above_val->first == requestedTime)
   {
     return above_val->second;
   }
