@@ -97,7 +97,7 @@ SCENARIO("Copy construct & copy assign a queue")
       {
         for (int i = 0; i < 20; i++)
         {
-          auto val = queue.waitGet();
+          auto val = copied_queue.waitGet();
           CHECK(val == std::to_string(i));
         }
       }
@@ -112,7 +112,7 @@ SCENARIO("Copy construct & copy assign a queue")
       {
         for (int i = 0; i < 20; i++)
         {
-          auto val = queue.waitGet();
+          auto val = copied_queue.waitGet();
           CHECK(val == std::to_string(i));
         }
       }
@@ -180,7 +180,6 @@ SCENARIO("Move an object into the queue")
   }
 }
 
-// TODO:
 SCENARIO("Object without default constructor")
 {
 
