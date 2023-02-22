@@ -10,7 +10,7 @@ All containers are in the namespace `Concurrent`.
 
 # Instructions
 ## How to Build
-Download Git, CMake, a build system and a C++ compiler
+Download Git, CMake, a native build system and a C++ compiler
 ```
 sudo apt install git
 sudo apt install cmake 
